@@ -1,0 +1,42 @@
+void game1() {
+    Boilerplate::App app = Boilerplate::start(640, 480, "game1");
+    
+    SDL_Rect r = { 10, 10, 300, 150 };
+    float vx, vy = 0;
+    
+    app.onKeyDown = [&](SDL_Keycode key) {
+        if(key == SDLK_a) {
+            vx = -300;
+        }
+        if(key == SDLK_d) {
+            vx = 300;
+        }
+        if(key == SDLK_w) {
+            vy = -300;
+        }
+        if(key == SDLK_s) {
+            vy = 300;
+        }
+    };
+    
+    app.onKeyUp = [&](SDL_Keycode key) {
+        vx = 0;
+        vy = 0;
+    };
+    
+    app.render = [&]() {
+        SDL_SetRenderDrawColor(app.renderer, 0, 0, 0, 255);
+        SDL_RenderClear(app.renderer);
+        
+        SDL_SetRenderDrawColor(app.renderer, 250, 0, 100, 255);
+        SDL_RenderFillRect(app.renderer, &r);
+    };
+    
+    app.tick = [&](float dt) {
+        r.x += dt * vx;
+        r.y += dt * vy;
+    };
+    
+    Boilerplate::loop(app);
+    Boilerplate::stop(app);
+}
