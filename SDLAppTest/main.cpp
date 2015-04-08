@@ -23,11 +23,11 @@ void game2() {
          0.0,   0.7, 0,   0, 1, 1
     };
     
-    GLuint vbo = VboHelper::makeVbo(sizeof(data), data);
-    
     GLuint vao;
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
+    
+    GLuint vbo = VboHelper::makeVbo(sizeof(data), data);
     
     GLint attribute_coord3d = ShaderLoader::getAttribute(program, "coord3d");
     GLint attribute_color = ShaderLoader::getAttribute(program, "v_color");
