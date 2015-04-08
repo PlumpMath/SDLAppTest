@@ -1,14 +1,11 @@
+#version 330 core
 
-attribute vec3 coord3d;
-attribute vec3 v_color;
+in vec3 coord3d;
+in vec3 v_color;
 
 uniform vec3 translate;
 
-varying vec3 frag_color;
-
-// attribute - per vertex
-// varying - send to fragment shader
-// uniform - for the whole VBO
+out vec3 frag_color;
 
 void main(void) {
     frag_color = v_color;

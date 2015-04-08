@@ -1,5 +1,6 @@
 #pragma once
 
+#include <GL/glew.h>
 #include <SDL2/SDL.h>
 #include <functional>
 
@@ -15,7 +16,7 @@ namespace Boilerplate {
         
         // Internal
         SDL_Window *window;
-        SDL_Renderer *renderer;
+        SDL_GLContext context;
         float totalTime = 0.0f;
     };
     

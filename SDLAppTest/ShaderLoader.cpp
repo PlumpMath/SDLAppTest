@@ -5,28 +5,34 @@
 #include <sstream>
 #include <stdlib.h>
 #include <math.h>
-#include <GLFW/glfw3.h>
+
+#include <SDL2/SDL.h>
 
 using namespace std;
 
 void printLog(GLuint object)
 {
     GLint log_length = 0;
-    if (glIsShader(object))
+    
+    if (glIsShader(object)) {
         glGetShaderiv(object, GL_INFO_LOG_LENGTH, &log_length);
-    else if (glIsProgram(object))
+    }
+    else if (glIsProgram(object)) {
         glGetProgramiv(object, GL_INFO_LOG_LENGTH, &log_length);
+    }
     else {
-        fprintf(stderr, "printlog: Not a shader or a program\n");
-        return;
+        fprintf(stderr, "printLog: Not a shader or a program\n");
+        exit(1);
     }
     
     char* log = (char*)malloc(log_length);
     
-    if (glIsShader(object))
+    if (glIsShader(object)) {
         glGetShaderInfoLog(object, log_length, NULL, log);
-    else if (glIsProgram(object))
+    }
+    else if (glIsProgram(object)) {
         glGetProgramInfoLog(object, log_length, NULL, log);
+    }
     
     fprintf(stderr, "%s", log);
     free(log);
@@ -53,8 +59,8 @@ GLuint loadShader(string path, int shaderType) {
     
     int shader = glCreateShader(shaderType);
     
-    const char *codeStr = code.c_str();
-    glShaderSource(shader, 1, &codeStr, NULL);
+    const char *ccode = code.c_str();
+    glShaderSource(shader, 1, &ccode, NULL);
     glCompileShader(shader);
     
     glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
@@ -63,6 +69,7 @@ GLuint loadShader(string path, int shaderType) {
     {
         glGetShaderInfoLog(shader, 512, NULL, infoLog);
         cerr << "Failed to compile shader '" << path << "'" << endl;
+        printLog(shader);
         exit(1);
     };
     

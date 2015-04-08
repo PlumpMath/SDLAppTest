@@ -1,15 +1,21 @@
 #include "Boilerplate.h"
 
 #include <stdio.h>
-#include <GL/glew.h>
+#include <iostream>
+
+#include <SDL2/SDL.h>
 
 using namespace Boilerplate;
+using namespace std;
 
 App Boilerplate::start(int w, int h, const char *title) {
     SDL_Init(SDL_INIT_VIDEO);
+
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+    SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
     
     App app;
     
@@ -18,25 +24,23 @@ App Boilerplate::start(int w, int h, const char *title) {
                                   SDL_WINDOWPOS_UNDEFINED,
                                   w,
                                   h,
-                                  SDL_WINDOW_OPENGL);
+                                  SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
     
     if (!app.window) {
         printf("Could not create window: %s\n", SDL_GetError());
         exit(1);
     }
-    
-    Uint32 rendererFlags = SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC;
-    
-    app.renderer = SDL_CreateRenderer(app.window,
-                                      -1,
-                                      rendererFlags);
-    
+
+    app.context = SDL_GL_CreateContext(app.window);
+    SDL_GL_SetSwapInterval(1);
+
+    glewExperimental = true;
     GLenum glew_status = glewInit();
     if (glew_status != GLEW_OK) {
         fprintf(stderr, "Error: %s\n", glewGetErrorString(glew_status));
         exit(1);
     }
-    
+
     return app;
 }
 
@@ -85,7 +89,7 @@ void Boilerplate::loop(const App& app) {
             app.render();
         }
         
-        SDL_RenderPresent(app.renderer);
+        SDL_GL_SwapWindow(app.window);
         SDL_Delay(10);
     }
 }

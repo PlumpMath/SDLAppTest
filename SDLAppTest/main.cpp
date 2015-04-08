@@ -1,4 +1,5 @@
 #include <iostream>
+#include <GL/glew.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include "Boilerplate.h"
@@ -24,6 +25,10 @@ void game2() {
     
     GLuint vbo = VboHelper::makeVbo(sizeof(data), data);
     
+    GLuint vao;
+    glGenVertexArrays(1, &vao);
+    glBindVertexArray(vao);
+    
     GLint attribute_coord3d = ShaderLoader::getAttribute(program, "coord3d");
     GLint attribute_color = ShaderLoader::getAttribute(program, "v_color");
     
@@ -31,13 +36,16 @@ void game2() {
     
     float x = 0.0f;
     
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    
     app.render = [&]() {
         glUseProgram(program);
         
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         
-        glClearColor(1.0, 1.0, 0.98, 1.0);
+        glClearColor(0.9, 1.0, 0.98, 1.0);
         glClear(GL_COLOR_BUFFER_BIT);
         
         glBindBuffer(GL_ARRAY_BUFFER, vbo);
