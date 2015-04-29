@@ -16,6 +16,8 @@
 		032BBCA21AD2D8A4006E804F /* triangle.v.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 032BBCA01AD2D8A4006E804F /* triangle.v.glsl */; };
 		032BBCA61AD2DBAC006E804F /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = 032BBCA41AD2DBAC006E804F /* ResourcePath.mm */; };
 		032BBCA91AD2EC75006E804F /* VboHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 032BBCA71AD2EC75006E804F /* VboHelper.cpp */; };
+		036FE1141AD5B9AE00DBB39C /* game2 in Resources */ = {isa = PBXBuildFile; fileRef = 036FE1131AD5B9AE00DBB39C /* game2 */; };
+		036FE1161AD5BE5300DBB39C /* game3 in Resources */ = {isa = PBXBuildFile; fileRef = 036FE1151AD5BE5300DBB39C /* game3 */; };
 		038ADE9C1ACF4897006154ED /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 038ADE9B1ACF4897006154ED /* main.cpp */; };
 		03BC9C411AD100A700D3A24B /* slime.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 03BC9C0A1AD0951900D3A24B /* slime.bmp */; };
 /* End PBXBuildFile section */
@@ -48,6 +50,8 @@
 		032BBCA51AD2DBAC006E804F /* ResourcePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourcePath.h; sourceTree = "<group>"; };
 		032BBCA71AD2EC75006E804F /* VboHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VboHelper.cpp; sourceTree = "<group>"; };
 		032BBCA81AD2EC75006E804F /* VboHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VboHelper.h; sourceTree = "<group>"; };
+		036FE1131AD5B9AE00DBB39C /* game2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = game2; sourceTree = "<group>"; };
+		036FE1151AD5BE5300DBB39C /* game3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = game3; sourceTree = "<group>"; };
 		038ADE981ACF4897006154ED /* SDLAppTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDLAppTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		038ADE9B1ACF4897006154ED /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		03BC9C0A1AD0951900D3A24B /* slime.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = slime.bmp; sourceTree = "<group>"; };
@@ -73,6 +77,8 @@
 				03BC9C0A1AD0951900D3A24B /* slime.bmp */,
 				032BBC981AD2B676006E804F /* old */,
 				032BBC9A1AD2C546006E804F /* game1 */,
+				036FE1131AD5B9AE00DBB39C /* game2 */,
+				036FE1151AD5BE5300DBB39C /* game3 */,
 			);
 			name = old;
 			sourceTree = "<group>";
@@ -173,7 +179,9 @@
 				03BC9C411AD100A700D3A24B /* slime.bmp in Resources */,
 				032BBCA11AD2D8A4006E804F /* triangle.f.glsl in Resources */,
 				032BBC921AD27241006E804F /* jap.jpg in Resources */,
+				036FE1141AD5B9AE00DBB39C /* game2 in Resources */,
 				032BBCA21AD2D8A4006E804F /* triangle.v.glsl in Resources */,
+				036FE1161AD5BE5300DBB39C /* game3 in Resources */,
 				032BBC941AD27284006E804F /* round.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
